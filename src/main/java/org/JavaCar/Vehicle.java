@@ -6,12 +6,12 @@ public abstract class Vehicle {
     protected String marca;
     protected String model;
     protected double preuBase;
-    protected String motor;
+    protected int motor;
     protected int rodes;
     protected String etiquetaAmbiental;
     //Fi VARIABLES
 
-    public Vehicle(String matricula, String marca, String model, double preuBase, String motor, int rodes, String etiquetaAmbiental) {
+    public Vehicle(String matricula, String marca, String model, double preuBase, int motor, int rodes, String etiquetaAmbiental) {
         this.matricula = matricula;
         this.marca = marca;
         this.model = model;
@@ -37,7 +37,7 @@ public abstract class Vehicle {
         return preuBase;
     }
 
-    public String getMotor() {
+    public int getMotor() {
         return motor;
     }
 
