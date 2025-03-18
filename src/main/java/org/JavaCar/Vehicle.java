@@ -48,4 +48,6 @@ public abstract class Vehicle {
     public String getEtiquetaAmbiental() {
         return etiquetaAmbiental;
     }
+
+
 }
