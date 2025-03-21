@@ -9,8 +9,8 @@ public abstract class Vehicle {
     protected String model;
     protected double preuBase;
     protected Motor motor;
-    protected ArrayList <Roda> rodes = new ArrayList<>();
-    protected String etiquetaAmbiental;
+    protected ArrayList<Roda> rodes;
+    protected EtiquetaAmbiental etiquetaAmbiental;
     //Fi VARIABLES
 
 
@@ -21,7 +21,7 @@ public abstract class Vehicle {
         this.preuBase = preuBase;
         this.motor = motor;
         this.rodes = rodes;
-        this.etiquetaAmbiental = etiquetaAmbiental;
+        this.etiquetaAmbiental = EtiquetaAmbiental.valueOf(etiquetaAmbiental);
     }
 
     public String getMatricula() {
@@ -49,7 +49,7 @@ public abstract class Vehicle {
     }
 
     public String getEtiquetaAmbiental() {
-        return etiquetaAmbiental;
+        return String.valueOf(etiquetaAmbiental);
     }
 
 
