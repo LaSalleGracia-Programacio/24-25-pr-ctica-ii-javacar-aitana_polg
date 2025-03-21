@@ -14,14 +14,13 @@ public abstract class Vehicle {
     //Fi VARIABLES
 
 
-    public Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, ArrayList<Roda> rodes, EtiquetaAmbiental etiquetaAmbiental) {
+    public Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, ArrayList<Roda> rodes) {
         this.matricula = matricula;
         this.marca = marca;
         this.model = model;
         this.preuBase = preuBase;
         this.motor = motor;
         this.rodes = rodes;
-        this.etiquetaAmbiental = etiquetaAmbiental;
     }
 
     public String getMatricula() {

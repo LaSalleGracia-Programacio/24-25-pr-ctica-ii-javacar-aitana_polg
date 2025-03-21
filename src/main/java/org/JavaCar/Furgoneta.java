@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Furgoneta extends Vehicle implements Llogable{
     double capacitatCarga;
 
-    public Furgoneta(String matricula, String marca, String model, double preuBase, double capacitatCarga, Motor motor, ArrayList<Roda> rodes, EtiquetaAmbiental etiquetaAmbiental) {
-        super(matricula, marca, model, preuBase, motor, rodes, etiquetaAmbiental);
+    public Furgoneta(String matricula, String marca, String model, double preuBase, double capacitatCarga, Motor motor, ArrayList<Roda> rodes) {
+        super(matricula, marca, model, preuBase, motor, rodes);
 
         this.capacitatCarga = capacitatCarga;
     }
