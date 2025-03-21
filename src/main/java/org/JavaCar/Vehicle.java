@@ -1,17 +1,20 @@
 package org.JavaCar;
 
+import java.util.ArrayList;
+
 public abstract class Vehicle {
     //inici VARIABLES
     protected String matricula;
     protected String marca;
     protected String model;
     protected double preuBase;
-    protected int motor;
-    protected int rodes;
+    protected Motor motor;
+    protected ArrayList <Roda> rodes = new ArrayList<>();
     protected String etiquetaAmbiental;
     //Fi VARIABLES
 
-    public Vehicle(String matricula, String marca, String model, double preuBase, int motor, int rodes, String etiquetaAmbiental) {
+
+    public Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, ArrayList<Roda> rodes, String etiquetaAmbiental) {
         this.matricula = matricula;
         this.marca = marca;
         this.model = model;
@@ -37,11 +40,11 @@ public abstract class Vehicle {
         return preuBase;
     }
 
-    public int getMotor() {
+    public Motor getMotor() {
         return motor;
     }
 
-    public int getRodes() {
+    public ArrayList<Roda> getRodes() {
         return rodes;
     }
 
