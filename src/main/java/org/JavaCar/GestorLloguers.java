@@ -7,8 +7,12 @@ public class GestorLloguers {
     double preuMax;
 
     public static double calcularIngressosTotals(List<Vehicle> vehicles, int dies){
+        double total = 0;
 
-        return 0;
+        for (Vehicle v : vehicles){
+            total += v.calcularPreu(dies);
+        }
+        return total;
     }
     public void filtrarPerPreu(double preuMax){
 

@@ -10,8 +10,13 @@ public class Moto extends Vehicle implements Llogable{
         super(matricula, marca, model, preuBase, motor, new ArrayList<>(Arrays.asList(rodesArray)));
     }
 
-
     public int getCilindrada() {
         return cilindrada;
+    }
+
+    @Override
+    public double calcularPreu(int dies) {
+        double extra = (cilindrada > 500) ? 5 * dies: 0;
+        return super.calcularPreu(dies);
     }
 }
