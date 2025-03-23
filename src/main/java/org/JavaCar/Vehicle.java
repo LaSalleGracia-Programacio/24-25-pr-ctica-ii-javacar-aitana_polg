@@ -30,12 +30,12 @@ public abstract class Vehicle implements Llogable{
 
         if(this instanceof Moto) {
             Moto m = (Moto) this;
-            if (m.getCilindrada() > 500){
+            if (m.getCilindrada() >= 500){
                 extra = 5 * dies;
             }
         } else if (this instanceof Furgoneta) {
             Furgoneta f = (Furgoneta) this;
-            if(f.getCapacitatCarga() > 1000) {
+            if(f.getCapacitatCarga() >= 1000) {
                 extra = 10 * dies;
             }
         }
