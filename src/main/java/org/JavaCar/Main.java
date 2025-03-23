@@ -4,14 +4,40 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+    static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
-        System.out.println("Benvingut/da a JavaCar que vol fer?");
-        Menu();
+        System.out.println(benvinguda());
+        mostrarMenu();
+        GestioMenu();
     }
 
-    public static void Menu(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("1. Llogar un vehicle \n2. Gestionar els meus vehicles alquilats");
+    /**
+     * Retorna el missatge de benvinguda
+     *
+     * @return String amb el text de benvinguda
+     */
+    public static String benvinguda() {
+        return "---------------------------------------\n" +
+                "               JavaCar\n" +
+                "---------------------------------------";
+    }
+
+    /**
+     * Mostra el menu principal amb les opcions disponibles per a l'usuari
+     */
+    public static void mostrarMenu() {
+        System.out.println("\n-------------MENU PRINCIPAL------------");
+        System.out.println("1. Llogar un vehicle");
+        System.out.println("2. Gestionar els meus vehicles llogats");
+        System.out.println("3. Sortir");
+        System.out.println("---------------------------------------\n");
+    }
+
+    /**
+     * Gestiona la opció seleccionada
+     */
+    public static void GestioMenu(){
         try {
             int opcio = sc.nextInt();
             switch (opcio) {
@@ -23,16 +49,15 @@ public class Main {
                     break;
                 default:
                     System.out.println("Si us plau, escull entre les opcions que et proporcionem");
-                    Menu();
+                    GestioMenu();
             }
         } catch (InputMismatchException e){
             System.out.println("Si us plau, escull entre les opcions que et proporcionem");
-            Menu();
+            GestioMenu();
         }
     }
 
     public static void Client(String usuari){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Que vols fer? \n1. Buscar Vehicle per temps d'alquiler \n2. Buscar Vehicles per preu d'alquiler");
         try {
             int opcio = sc.nextInt();
@@ -45,11 +70,11 @@ public class Main {
                     break;
                 default:
                     System.out.println("Si us plau, escull entre les opcions que et proporcionem");
-                    Menu();
+                    GestioMenu();
             }
         } catch (InputMismatchException e){
             System.out.println("Si us plau, escull entre les opcions que et proporcionem");
-            Menu();
+            GestioMenu();;
         }
     }
 
@@ -72,11 +97,11 @@ public class Main {
                     break;
                 default:
                     System.out.println("Si us plau, escull entre les opcions que et proporcionem");
-                    Menu();
+                    GestioMenu();
             }
         } catch (InputMismatchException e){
             System.out.println("Si us plau, escull entre les opcions que et proporcionem");
-            Menu();
+            GestioMenu();
         }
     }
 
