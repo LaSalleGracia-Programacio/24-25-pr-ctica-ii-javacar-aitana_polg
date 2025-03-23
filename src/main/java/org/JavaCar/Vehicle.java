@@ -20,7 +20,8 @@ public abstract class Vehicle implements Llogable{
         this.model = model;
         this.preuBase = preuBase;
         this.motor = motor;
-        this.rodes = rodes.toArray(new Roda[0]);
+        Roda[] temp = rodes.toArray(new Roda[0]);
+        this.rodes = (temp.length == 0) ? null : temp;
     }
 
     @Override
