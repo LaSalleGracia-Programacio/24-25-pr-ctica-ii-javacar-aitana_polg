@@ -19,6 +19,6 @@ public class Furgoneta extends Vehicle implements Llogable{
     @Override
     public double calcularPreu(int dies) {
         double extra = (capacitatCarga > 1000) ? 10 * dies : 0;
-        return super.calcularPreu(dies);
+        return super.calcularPreu(dies) + extra;
     }
 }
