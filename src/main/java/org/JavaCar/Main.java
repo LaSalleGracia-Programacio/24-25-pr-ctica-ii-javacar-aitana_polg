@@ -11,7 +11,7 @@ public class Main {
 
     public static void Menu(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("1. Alquilar un Vehicle \n2. Gestionar els meus vehicles alquilats");
+        System.out.println("1. Llogar un vehicle \n2. Gestionar els meus vehicles alquilats");
         try {
             int opcio = sc.nextInt();
             switch (opcio) {
