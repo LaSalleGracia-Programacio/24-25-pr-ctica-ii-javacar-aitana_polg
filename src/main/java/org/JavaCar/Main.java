@@ -63,10 +63,14 @@ public class Main {
             int opcio = sc.nextInt();
             switch (opcio) {
                 case 1:
-                    System.out.println("1");
+                    System.out.println("Has seleccionat l'opció 1");
                     break;
                 case 2:
-                    System.out.println("2");
+                    System.out.println("Has seleccionat l'opció 2");
+                    break;
+                case 3:
+                    System.out.println("Has seleccionat l'opció 3");
+                    GestioMenu();
                     break;
                 default:
                     System.out.println("Si us plau, escull entre les opcions que et proporcionem");
@@ -85,7 +89,7 @@ public class Main {
         System.out.println("\n-------------MENU CLIENT------------");
         System.out.println("1. Filtrar vehicle per temps lloguer");
         System.out.println("2. Filtrar vehicle per preu lloguer");
-        System.out.println("3. Sortir");
+        System.out.println("3. Tornar enrere");
         System.out.println("---------------------------------------\n");
     }
 
