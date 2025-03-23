@@ -48,7 +48,7 @@ public class Main {
                     Arrendatari("");
                     break;
                 default:
-                    System.out.println("Si us plau, escull entre les opcions que et proporcionem");
+                    System.out.println("ERROR: Opció no vàlida");
                     GestioMenu();
             }
         } catch (InputMismatchException e){
@@ -73,7 +73,7 @@ public class Main {
                     GestioMenu();
                     break;
                 default:
-                    System.out.println("Si us plau, escull entre les opcions que et proporcionem");
+                    System.out.println("ERROR: Opció no vàlida");
                     GestioMenu();
             }
         } catch (InputMismatchException e){
@@ -112,7 +112,7 @@ public class Main {
                     System.out.println("2");
                     break;
                 default:
-                    System.out.println("Si us plau, escull entre les opcions que et proporcionem");
+                    System.out.println("ERROR: Opció no vàlida");
                     GestioMenu();
             }
         } catch (InputMismatchException e){
