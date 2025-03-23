@@ -2,7 +2,7 @@ package org.JavaCar;
 
 import java.util.ArrayList;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Llogable{
     //inici VARIABLES
     protected String matricula;
     protected String marca;
@@ -23,6 +23,7 @@ public abstract class Vehicle {
         this.rodes = rodes.toArray(new Roda[0]);
     }
 
+    @Override
     public double calcularPreu(int dies){
         double base = preuBase * dies;
         double extra = 0;
