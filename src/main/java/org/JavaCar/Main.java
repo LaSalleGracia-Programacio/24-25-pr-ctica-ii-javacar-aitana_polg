@@ -58,7 +58,7 @@ public class Main {
     }
 
     public static void Client(String usuari){
-        System.out.println("Que vols fer? \n1. Buscar Vehicle per temps d'alquiler \n2. Buscar Vehicles per preu d'alquiler");
+        mostrarMenuClient();
         try {
             int opcio = sc.nextInt();
             switch (opcio) {
@@ -77,6 +77,18 @@ public class Main {
             GestioMenu();;
         }
     }
+
+    /**
+     * Mostra el menu client amb les opcions disponibles per a l'usuari
+     */
+    public static void mostrarMenuClient() {
+        System.out.println("\n-------------MENU CLIENT------------");
+        System.out.println("1. Filtrar vehicle per temps lloguer");
+        System.out.println("2. Filtrar vehicle per preu lloguer");
+        System.out.println("3. Sortir");
+        System.out.println("---------------------------------------\n");
+    }
+
 
     public static void Arrendatari(String usuari){
         boolean rol = true;
