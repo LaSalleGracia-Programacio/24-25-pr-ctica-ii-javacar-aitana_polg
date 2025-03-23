@@ -1,12 +1,13 @@
 package org.JavaCar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Furgoneta extends Vehicle implements Llogable{
     double capacitatCarga;
 
-    public Furgoneta(String matricula, String marca, String model, double preuBase, double capacitatCarga, Motor motor, ArrayList<Roda> rodes) {
-        super(matricula, marca, model, preuBase, motor, rodes);
+    public Furgoneta(String matricula, String marca, String model, double preuBase, double capacitatCarga, Motor motor, Roda[] rodesArray) {
+        super(matricula, marca, model, preuBase, motor, new ArrayList<>(Arrays.asList(rodesArray)));
 
         this.capacitatCarga = capacitatCarga;
     }
