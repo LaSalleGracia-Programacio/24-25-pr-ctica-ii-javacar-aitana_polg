@@ -93,7 +93,10 @@ public class Main {
         System.out.println("---------------------------------------\n");
     }
 
-
+    /**
+     * Metode per les opcions que pot fer l'arrendatari
+     * @param usuari
+     */
     public static void Arrendatari(String usuari){
         boolean rol = true;
         Scanner sc = new Scanner(System.in);
@@ -121,6 +124,10 @@ public class Main {
         }
     }
 
+    /**
+     * Metode per la identificació de la persona
+     * @param rol
+     */
     public static void Identificarse(boolean rol){
         Scanner sc = new Scanner(System.in);
         System.out.println("Abans de comencar, hem de saber qui ets\nCom et dius?");
