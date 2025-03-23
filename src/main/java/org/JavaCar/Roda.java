@@ -1,7 +1,7 @@
 package org.JavaCar;
 
 public class Roda {
-    String marca;
+    private String marca;
     double diametre;
 
     public Roda(String marca, double diametre) {
