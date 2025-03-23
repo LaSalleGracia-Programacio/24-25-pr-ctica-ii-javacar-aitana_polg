@@ -9,7 +9,7 @@ public abstract class Vehicle {
     protected String model;
     protected double preuBase;
     protected Motor motor;
-    protected Roda[] rodesArray;
+    protected Roda[] rodes;
     protected EtiquetaAmbiental etiquetaAmbiental;
     //Fi VARIABLES
 
@@ -20,7 +20,7 @@ public abstract class Vehicle {
         this.model = model;
         this.preuBase = preuBase;
         this.motor = motor;
-        this.rodesArray = rodes.toArray(new Roda[0]);
+        this.rodes = rodes.toArray(new Roda[0]);
     }
 
     public String getMatricula() {
@@ -43,8 +43,8 @@ public abstract class Vehicle {
         return motor;
     }
 
-    public Roda[] getRodesArray() {
-        return rodesArray;
+    public Roda[] getRodes() {
+        return rodes;
     }
 
     public EtiquetaAmbiental getEtiquetaAmbiental() {
