@@ -20,7 +20,8 @@ public abstract class Vehicle implements Llogable{
         this.model = model;
         this.preuBase = preuBase;
         this.motor = motor;
-        this.rodes = rodes.toArray(new Roda[0]);
+        Roda[] temp = rodes.toArray(new Roda[0]);
+        this.rodes = (temp.length == 0) ? null : temp;
     }
 
     @Override
@@ -30,12 +31,12 @@ public abstract class Vehicle implements Llogable{
 
         if(this instanceof Moto) {
             Moto m = (Moto) this;
-            if (m.getCilindrada() > 500){
+            if (m.getCilindrada() >= 500){
                 extra = 5 * dies;
             }
         } else if (this instanceof Furgoneta) {
             Furgoneta f = (Furgoneta) this;
-            if(f.getCapacitatCarga() > 1000) {
+            if(f.getCapacitatCarga() >= 1000) {
                 extra = 10 * dies;
             }
         }

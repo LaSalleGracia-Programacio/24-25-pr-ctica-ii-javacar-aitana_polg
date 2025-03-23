@@ -26,7 +26,7 @@ public class GestorLloguers {
         return total;
     }
 
-    public void filtrarPerPreu(double preuMax) {
+    public void filtrarPerPreu(double preuMax, int dies) {
         System.out.println("Vehicles amb preu inferior a " + preuMax + ":");
 
         for (Vehicle v : vehicleList) {
