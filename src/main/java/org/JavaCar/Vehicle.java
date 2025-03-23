@@ -23,6 +23,24 @@ public abstract class Vehicle {
         this.rodes = rodes.toArray(new Roda[0]);
     }
 
+    public double calcularPreu(int dies){
+        double base = preuBase * dies;
+        double extra = 0;
+
+        if(this instanceof Moto) {
+            Moto m = (Moto) this;
+            if (m.getCilindrada() > 500){
+                extra = 5 * dies;
+            }
+        } else if (this instanceof Furgoneta) {
+            Furgoneta f = (Furgoneta) this;
+            if(f.getCapacitatCarga() > 1000) {
+                extra = 10 * dies;
+            }
+        }
+        return base + extra;
+    }
+
     public String getMatricula() {
         return matricula;
     }
