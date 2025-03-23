@@ -7,7 +7,7 @@ public class Moto extends Vehicle implements Llogable{
     private int cilindrada;
 
     public Moto(String matricula, String marca, String model, double preuBase,int cilindrada, Motor motor, Roda[] rodesArray) {
-        super(matricula, marca, model, preuBase, motor, new ArrayList<>(Arrays.asList(rodesArray)));
+        super(matricula, marca, model, preuBase, motor, new ArrayList<>(Arrays.asList(rodesArray !=null ? rodesArray: new Roda[0])));
     }
 
     public int getCilindrada() {
@@ -17,6 +17,6 @@ public class Moto extends Vehicle implements Llogable{
     @Override
     public double calcularPreu(int dies) {
         double extra = (cilindrada > 500) ? 5 * dies: 0;
-        return super.calcularPreu(dies);
+        return super.calcularPreu(dies) + extra;
     }
 }
