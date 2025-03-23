@@ -105,6 +105,7 @@ public class Main {
             int opcio = sc.nextInt();
             switch (opcio) {
                 case 1:
+                    System.out.println("Has seleccionat l'opció 1");
                     if (usuari == ""){
                         Identificarse(rol);
                     } else {
@@ -112,7 +113,7 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("2");
+                    System.out.println("Has seleccionat l'opció 2");
                     break;
                 default:
                     System.out.println("ERROR: Opció no vàlida");
