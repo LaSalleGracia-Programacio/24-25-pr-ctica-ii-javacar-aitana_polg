@@ -146,10 +146,29 @@ public class Main {
      */
     public static void registre(Scanner sc){
         boolean rol = false;
-        System.out.println("Abans de comencar, hem de saber qui ets\nCom et dius?");
-        String usuari = sc.next();
+        String usuari = "";
+        String pass = "";
 
+
+        System.out.println("\n-------------REGISTRE------------");
+        System.out.println("Ara deurà de contestar a unes preguntes");
+
+        //Demanar el nom de l'usuari
+        System.out.println("Com et dius?");
+        usuari = sc.next();
+
+        //Demanar una contrasenya de mínim 4 digits
+        System.out.print("Introdueix una contrasenya (mínim 4 digits): ");
+        pass = sc.next();
+        if (pass.length() <= 3){
+            System.out.println("La contrasenya a de tindre mínim 4 digits");
+            System.out.print("Introdueix una contrasenya (mínim 4 digits): ");
+            pass = sc.next();
+        }
+
+        //Benvinguda a l'usuari
         System.out.println("Benvingut a JavaCar "+ usuari);
+
         if (rol == true) {
             Arrendatari(usuari);
         } else {
