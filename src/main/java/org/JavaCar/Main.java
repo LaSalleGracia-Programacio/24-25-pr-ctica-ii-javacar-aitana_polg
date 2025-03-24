@@ -31,7 +31,7 @@ public class Main {
         System.out.println("1. Llogar un vehicle");
         System.out.println("2. Gestionar els meus vehicles llogats");
         System.out.println("3. Sortir");
-        System.out.println("---------------------------------------\n");
+        System.out.println("---------------------------------------");
     }
 
     /**
@@ -39,6 +39,7 @@ public class Main {
      */
     public static void GestioMenu(){
         try {
+            System.out.print("Escull una opció -> ");
             int opcio = sc.nextInt();
             switch (opcio) {
                 case 1:
@@ -92,7 +93,7 @@ public class Main {
         System.out.println("1. Filtrar vehicle per temps lloguer");
         System.out.println("2. Filtrar vehicle per preu lloguer");
         System.out.println("3. Tornar enrere");
-        System.out.println("---------------------------------------\n");
+        System.out.println("---------------------------------------");
     }
 
     /**
@@ -102,6 +103,7 @@ public class Main {
     public static void Arrendatari(String usuari){
         boolean rol = true;
         mostrarMenuArrendatari();
+        System.out.print("Escull una opció -> ");
         try {
             int opcio = sc.nextInt();
             switch (opcio) {
@@ -143,7 +145,6 @@ public class Main {
      * @param rol
      */
     public static void Identificarse(boolean rol){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Abans de comencar, hem de saber qui ets\nCom et dius?");
         String usuari = sc.next();
         System.out.println("Benvingut a JavaCar "+ usuari);
