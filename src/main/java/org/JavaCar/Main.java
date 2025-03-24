@@ -151,7 +151,7 @@ public class Main {
 
         System.out.println("Benvingut a JavaCar "+ usuari);
         if (rol == true) {
-            Arrendatari(sc);
+            Arrendatari(usuari);
         } else {
             Client(usuari);
         }
