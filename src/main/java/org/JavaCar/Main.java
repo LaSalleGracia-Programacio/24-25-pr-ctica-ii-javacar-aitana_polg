@@ -47,6 +47,8 @@ public class Main {
                 case 2:
                     Arrendatari("");
                     break;
+                case 3:
+                    System.out.println("Has seleccionat l'opció 3");
                 default:
                     System.out.println("ERROR: Opció no vàlida");
                     GestioMenu();
