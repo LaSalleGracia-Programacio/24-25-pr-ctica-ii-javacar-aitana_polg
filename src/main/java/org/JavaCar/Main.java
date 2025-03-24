@@ -99,7 +99,6 @@ public class Main {
      */
     public static void Arrendatari(String usuari){
         boolean rol = true;
-        Scanner sc = new Scanner(System.in);
         System.out.println("Que vols fer? \n1.Calcular ingressos totals \n2. Afegir un vehicle per alquilar");
         try {
             int opcio = sc.nextInt();
