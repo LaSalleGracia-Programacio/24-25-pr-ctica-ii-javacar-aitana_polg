@@ -98,11 +98,10 @@ public class Main {
 
     /**
      * Metode per les opcions que pot fer l'arrendatari
-     * @param sc L'objecte Scanner per llegir l'entrada de l'usuari.
+     * @param usuari nom de l'usuari
      */
-    public static void Arrendatari(Scanner sc) {
+    public static void Arrendatari(String usuari) {
         boolean rol = true;
-        String usuari = "";
         mostrarMenuArrendatari();
         System.out.print("Escull una opció -> ");
         try {
