@@ -99,6 +99,7 @@ public class Main {
      */
     public static void Arrendatari(String usuari){
         boolean rol = true;
+        mostrarMenuArrendatari();
         try {
             int opcio = sc.nextInt();
             switch (opcio) {
