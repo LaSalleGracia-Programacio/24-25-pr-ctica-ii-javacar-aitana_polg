@@ -5,7 +5,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+    //Variables globals
     static Scanner sc = new Scanner(System.in);
+    private static String nomUsuariActual = ""; // Nom de l'usuari actual
+    private static String passActual = ""; // Contrasenya actual de l'usuario
+    private static boolean usuariAutenficat = false; // Saber si l'usuari està autentificat o no
     private static String[] passArrendataris = {"1234", "4321", "33213"}; //Contrasenyes per verificar que és arrendatari
     private static ArrayList<String[]> usuarisRegistrats = new ArrayList<>(); // Llista d'usuaris registrats (emmagatzema usuari i contrasenya)
 
@@ -203,8 +207,42 @@ public class Main {
     /**
      * Metode per autentificar-se
      *
+     * @param sc L'objecte Scanner per llegir l'entrada de l'usuari.
+     * @return true si l'autenticació es exitosa, false en cas contrari
      */
-    public static void autentificar(Scanner sc) {
+    public static boolean autentificar(Scanner sc) {
+        // Declaració de variables
+        String nombreIntroduit;
+        String passIntroduit;
 
+        if (!verificarUsuariRegistrat()) {
+            return false; // Sortir si l'usuari no està registrat
+        }
+        System.out.println("\n-------------AUTENTIFICACIÓ------------");
+        // Autentificació (usuari i contrasenya)
+        System.out.println("Introdueix el teu nom d'usuari: ");
+        nombreIntroduit = sc.next();
+
+        System.out.println("Introdueix la teva contrasenya: ");
+        passIntroduit = sc.next();
+
+        // Busca l'usuari en la llista d'usuaris registrats
+        for (String[] usuari : usuarisRegistrats) {
+            if (usuari[0].equals(nombreIntroduit) && usuari[1].equals(passIntroduit)) {
+                // Si trobem coincidència de nom i contrasenya
+                System.out.println("La autentificació ha estat exitosa. Benvingut al sistema " + nombreIntroduit + "!");
+
+                // Actualitzar variables globals
+                usuariAutenficat = true;
+                nomUsuariActual = nombreIntroduit;
+                passActual = passIntroduit;
+
+                return true; // Sessió iniciada
+            }
+        }
+
+        // Si no es troba una coincidència
+        System.out.println("ERROR: Nom d'usuari o contrasenya incorrectes. Intenta-ho de nou.");
+        return false;
     }
 }
