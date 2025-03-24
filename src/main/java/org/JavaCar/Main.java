@@ -1,11 +1,13 @@
 package org.JavaCar;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
-    private static String[] passArrendataris = {"1234", "4321", "33213"};
+    private static String[] passArrendataris = {"1234", "4321", "33213"}; //Contrasenyes per verificar que és arrendatari
+    private static ArrayList<String[]> usuarisRegistrats = new ArrayList<>(); // Llista d'usuaris registrats (emmagatzema usuari i contrasenya)
 
     public static void main(String[] args) {
         System.out.println(benvinguda());
@@ -170,6 +172,10 @@ public class Main {
         //Benvinguda a l'usuari
         System.out.println("Benvingut a JavaCar "+ usuari);
 
+        //Guardar informació de l'usuari
+        String[] nouUsuari = {usuari, pass};
+        usuarisRegistrats.add(nouUsuari);
+
         for (int i = 0; i < passArrendataris.length; i++) {
             if (pass == passArrendataris[i]){
                 Arrendatari(usuari);
@@ -177,6 +183,20 @@ public class Main {
                 Client(usuari);
             }
         }
+    }
+
+
+    /**
+     * Verificar si l'usuari està registrat.
+     *
+     * @return true Si l'usuari està registrat, false en cas contrari.
+     */
+    private static boolean verificarUsuariRegistrat() {
+        if (usuarisRegistrats.isEmpty()) {
+            System.out.println("ERROR: No estàs registrat. Per favor, regístrat primer.");
+            return false;
+        }
+        return true;
     }
 
 
