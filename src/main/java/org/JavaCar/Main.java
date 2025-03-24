@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
+    private static String[] passArrendataris = {"1234", "4321", "33213"};
 
     public static void main(String[] args) {
         System.out.println(benvinguda());
@@ -169,10 +170,12 @@ public class Main {
         //Benvinguda a l'usuari
         System.out.println("Benvingut a JavaCar "+ usuari);
 
-        if (rol == true) {
-            Arrendatari(usuari);
-        } else {
-            Client(usuari);
+        for (int i = 0; i < passArrendataris.length; i++) {
+            if (pass == passArrendataris[i]){
+                Arrendatari(usuari);
+            }else {
+                Client(usuari);
+            }
         }
     }
 
