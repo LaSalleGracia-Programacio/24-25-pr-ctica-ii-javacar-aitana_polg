@@ -98,10 +98,11 @@ public class Main {
 
     /**
      * Metode per les opcions que pot fer l'arrendatari
-     * @param usuari
+     * @param sc L'objecte Scanner per llegir l'entrada de l'usuari.
      */
-    public static void Arrendatari(String usuari){
+    public static void Arrendatari(Scanner sc) {
         boolean rol = true;
+        String usuari = "";
         mostrarMenuArrendatari();
         System.out.print("Escull una opció -> ");
         try {
@@ -110,7 +111,7 @@ public class Main {
                 case 1:
                     System.out.println("Has seleccionat l'opció 1");
                     if (usuari == ""){
-                        registre(rol);
+                        registre(sc);
                     } else {
                         System.out.println("Que tal?" + usuari);
                     }
@@ -142,16 +143,27 @@ public class Main {
 
     /**
      * Metode per la identificació de la persona
-     * @param rol
+     * @param sc L'objecte Scanner per llegir l'entrada de l'usuari.
      */
-    public static void registre(boolean rol){
+    public static void registre(Scanner sc){
+        boolean rol = false;
         System.out.println("Abans de comencar, hem de saber qui ets\nCom et dius?");
         String usuari = sc.next();
+
         System.out.println("Benvingut a JavaCar "+ usuari);
         if (rol == true) {
-            Arrendatari(usuari);
+            Arrendatari(sc);
         } else {
             Client(usuari);
         }
+    }
+
+
+    /**
+     * Metode per autentificar-se
+     *
+     */
+    public static void autentificar(Scanner sc) {
+
     }
 }
