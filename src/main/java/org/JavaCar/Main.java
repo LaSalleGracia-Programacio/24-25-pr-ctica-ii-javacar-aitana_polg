@@ -110,7 +110,7 @@ public class Main {
                 case 1:
                     System.out.println("Has seleccionat l'opció 1");
                     if (usuari == ""){
-                        Identificarse(rol);
+                        registre(rol);
                     } else {
                         System.out.println("Que tal?" + usuari);
                     }
@@ -144,7 +144,7 @@ public class Main {
      * Metode per la identificació de la persona
      * @param rol
      */
-    public static void Identificarse(boolean rol){
+    public static void registre(boolean rol){
         System.out.println("Abans de comencar, hem de saber qui ets\nCom et dius?");
         String usuari = sc.next();
         System.out.println("Benvingut a JavaCar "+ usuari);
