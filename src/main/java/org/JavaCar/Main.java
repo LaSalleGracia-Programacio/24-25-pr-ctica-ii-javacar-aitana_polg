@@ -99,7 +99,6 @@ public class Main {
      */
     public static void Arrendatari(String usuari){
         boolean rol = true;
-        System.out.println("Que vols fer? \n1.Calcular ingressos totals \n2. Afegir un vehicle per alquilar");
         try {
             int opcio = sc.nextInt();
             switch (opcio) {
@@ -123,6 +122,18 @@ public class Main {
             GestioMenu();
         }
     }
+
+    /**
+     * Mostra el menu arrendatari amb les opcions disponibles per a l'usuari
+     */
+    public static void mostrarMenuArrendatari() {
+        System.out.println("\n-------------MENU ARRENDATARI------------");
+        System.out.println("1. Calcular ingressos totals");
+        System.out.println("2. Afegir un vehicle per llogar");
+        System.out.println("3. Tornar enrere");
+        System.out.println("---------------------------------------\n");
+    }
+
 
     /**
      * Metode per la identificació de la persona
