@@ -14,4 +14,11 @@ public class Moto extends Vehicle implements Llogable{
     public int getCilindrada() {
         return cilindrada;
     }
+
+
+    @Override
+    public double calcularPreu(int dies) {
+        double extra = (cilindrada > 500) ? 5 : 0;
+        return (preuBase + extra) * dies;
+    }
 }
