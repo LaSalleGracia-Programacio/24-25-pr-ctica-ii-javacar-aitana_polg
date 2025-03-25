@@ -15,5 +15,5 @@ public class Furgoneta extends Vehicle implements Llogable{
     public double getCapacitatCarga() {
         return capacitatCarga;
     }
-    
+
 }

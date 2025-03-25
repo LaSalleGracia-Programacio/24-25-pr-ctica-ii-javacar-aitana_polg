@@ -43,6 +43,22 @@ public abstract class Vehicle implements Llogable{
         return base + extra;
     }
 
+
+    private EtiquetaAmbiental calcularEtiquetaAmbiental() {
+        // Lògica de càlcul de l'etiqueta ambiental basada en el tipus de motor i potència
+        if (motor.getTipus().equalsIgnoreCase("electric")) {
+            return EtiquetaAmbiental.ZeroEmisions;// Vehicle elèctric
+        } else if (motor.getTipus().equalsIgnoreCase("híbrid")) {
+            return EtiquetaAmbiental.Eco;   // Vehicle híbrid
+        } else if (motor.getTipus().equalsIgnoreCase("diesel") && motor.getPotencia() <= 120) {
+            return EtiquetaAmbiental.B;     // Dièsel moderat
+        } else if (motor.getTipus().equalsIgnoreCase("diesel") || motor.getTipus().equalsIgnoreCase("gasolina")) {
+            return EtiquetaAmbiental.C;     //  Vehicles més antics
+        } else {
+            return EtiquetaAmbiental.SenseEtiqueta; // Vehicles sense distintiu
+        }
+    }
+
     public String getMatricula() {
         return matricula;
     }
