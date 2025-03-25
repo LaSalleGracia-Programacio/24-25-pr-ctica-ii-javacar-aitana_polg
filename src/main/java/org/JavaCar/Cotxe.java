@@ -10,9 +10,4 @@ public class Cotxe extends Vehicle implements Llogable{
         super(matricula, marca, model, preuBase, motor, new ArrayList<>(Arrays.asList(rodesArray !=null ? rodesArray: new Roda[0])));
         this.nombrePlaces = nombrePlaces;
     }
-
-    @Override
-    public double calcularPreu(int dies) {
-        return preuBase * dies;
-    }
 }
