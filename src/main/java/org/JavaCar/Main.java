@@ -14,6 +14,7 @@ public class Main {
     private static String[] passArrendataris = {"1234", "4321", "33213"}; //Contrasenyes per verificar que és arrendatari
     private static ArrayList<String[]> usuarisRegistrats = new ArrayList<>(); // Llista d'usuaris registrats (emmagatzema usuari i contrasenya)
     private static GestorLloguers gestorLloguers = new GestorLloguers();
+    private static List<Vehicle> vehicles;
 
     public static void main(String[] args) {
         System.out.println(benvinguda());
@@ -129,7 +130,7 @@ public class Main {
                     if (usuari == ""){
                         registre(sc);
                     } else {
-                        System.out.println("Que tal?" + usuari);
+                        calcularIngressosTotals();
                     }
                     break;
                 case 2:
@@ -237,6 +238,24 @@ public class Main {
 
         mostrarMenu();
         GestioMenu();
+    }
+
+    public static void calcularIngressosTotals() {
+        if (gestorLloguers.getVehicleList().isEmpty()) {
+            System.out.println("No hi ha vehicles registrats per calcular ingressos.");
+            return;
+        }
+
+        System.out.print("Introdueix el nombre de dies per calcular els ingressos: ");
+        int dies = sc.nextInt();
+
+        if (dies <= 0) {
+            System.out.println("El nombre de dies ha de ser positiu.");
+            return;
+        }
+
+        double totalIngressos = gestorLloguers.calcularIngressosTotals(vehicles ,dies);
+        System.out.println("Ingressos totals per " + dies + " dies: " + totalIngressos + "€");
     }
 
 

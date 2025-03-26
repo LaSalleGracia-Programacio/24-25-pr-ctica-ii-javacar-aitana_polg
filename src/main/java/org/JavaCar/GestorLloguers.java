@@ -17,6 +17,10 @@ public class GestorLloguers {
         vehicleList.add(vehicle);
     }
 
+    public List<Vehicle> getVehicleList(){
+        return vehicleList;
+    }
+
     public static double calcularIngressosTotals(List<Vehicle> vehicles, int dies){
         double total = 0;
 
