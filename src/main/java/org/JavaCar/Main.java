@@ -84,8 +84,8 @@ public class Main {
         System.out.println("\n-------------MENU PRINCIPAL------------");
         System.out.println("1. Llogar un vehicle");
         System.out.println("2. Gestionar els meus vehicles llogats");
-        System.out.println("3. Sortir");
-        System.out.println("4. Tancar Secció");
+        System.out.println("3. Tancar Sessió");
+        System.out.println("4. Sortir");
         System.out.println("---------------------------------------");
     }
 
@@ -125,10 +125,10 @@ public class Main {
                         }
                     }
                 case 3:
-                    System.out.println("Gràcies per utilitzar JavaCar");
+                    tancarSessio();
                     break;
                 case 4:
-                    tancarSessio();
+                    System.out.println("Gràcies per utilitzar JavaCar");
                     break;
                 default:
                     System.out.println("ERROR: Opció no vàlida");
@@ -222,30 +222,68 @@ public class Main {
      * Metode per poder guardar la informació dels nous vehicles
      */
     public static void afegirVehiclePerLlogar(){
+        //Inici VARIABLES
+        String matricula;
+        String marca;
+        String model;
+        String tipusVehicle;
+        String tipusMotor;
+        //Fi VARIABLES
+
         System.out.println("\n------ Afegir un nou vehicle ------");
 
-        System.out.println("Introdueix la matricula:");
-        String matricula = sc.next();
+        do{
+            System.out.println("Introdueix la matricula:");
+            matricula = sc.next();
+            if (matricula.isEmpty()){
+                System.out.println("Error: La matrícula no pot estar buida.");
+            }
 
-        System.out.println("Marca del Vehicle:");
-        String marca = sc.next();
+        }while(matricula.isEmpty());
 
-        System.out.println("Model del Vehicle:");
-        String model = sc.next();
+        do {
+            sc.nextLine();
+            System.out.println("Marca del Vehicle:");
+            marca = sc.nextLine();
+            if (marca.isEmpty()){
+                System.out.println("Error: La marca no pot estar buida.");
+            }
+        }while (marca.isEmpty());
+
+        do {
+            System.out.println("Model del Vehicle:");
+            model = sc.nextLine();
+            if (model.isEmpty()){
+                System.out.println("Error: Model no pot estar buit.");
+            }
+        }while (model.isEmpty());
 
         System.out.println("Preu base per dia:");
         double preuBase = sc.nextDouble();
 
-        System.out.println("Tipus de motor (electric, híbrid, diesel, gasolina):");
-        String tipusMotor = sc.next();
+        do {
+            System.out.println("Tipus de motor (electric, híbrid, diesel, gasolina):");
+             tipusMotor = sc.next();
+             if (tipusMotor.isEmpty()){
+                 System.out.println("Error: El tipus de motor no pot estar buit.");
+             }
+        }while (tipusMotor.isEmpty());
+
 
         System.out.print("Potència del motor (CV): ");
         int potenciaMotor = sc.nextInt();
 
+
         Motor motor = new Motor(tipusMotor, potenciaMotor);
 
-        System.out.println("Quin tipus de vehicle és? (cotxe/moto/furgoneta):");
-        String tipusVehicle = sc.next().toLowerCase();
+        do {
+            System.out.println("Quin tipus de vehicle és? (cotxe/moto/furgoneta):");
+            tipusVehicle = sc.next().toLowerCase();
+            if (tipusVehicle.isEmpty()){
+                System.out.println("Error: El tipus de vehicle no pot estar buit.");
+            }
+        }while (tipusVehicle.isEmpty());
+
 
         Vehicle nouVehicle = null;
 

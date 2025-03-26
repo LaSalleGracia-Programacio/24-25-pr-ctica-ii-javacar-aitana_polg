@@ -31,6 +31,7 @@ public class GestorLloguers {
     }
 
     public void filtrarPerPreu(double preuMax, int dies) {
+        System.out.println("---------------VEHICLES---------------");
         System.out.println("Vehicles amb preu inferior a " + preuMax + ":");
 
         for (Vehicle v : vehicleList) {
@@ -44,6 +45,7 @@ public class GestorLloguers {
     }
 
     public void filtrarPerTemps(int diesMinims) {
+        System.out.println("---------------VEHICLES---------------");
         System.out.println("Vehicles disponibles per a un mínim de " + diesMinims + " dies:");
 
         for (Vehicle v : vehicleList) {
