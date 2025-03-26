@@ -48,27 +48,17 @@ public abstract class Vehicle implements Llogable{
 
 
     private EtiquetaAmbiental calcularEtiquetaAmbiental() {
-        String tipusCombustible = motor.getTipus().toLowerCase();
-
-        // Lògica de càlcul de l'etiqueta ambiental basada en el tipus de motor i potència
-        if (tipusCombustible.equals("electric") || tipusCombustible.equals("hidrogeno")) {
-            return EtiquetaAmbiental.ZeroEmisions;
-        } else if (tipusCombustible.equals("híbrido")) {
-            return EtiquetaAmbiental.Eco;
-        } else if (tipusCombustible.equals("gasolina")) {
-            if (anyMatriculacio >= 2006) {
-                return EtiquetaAmbiental.C;
-            } else if (anyMatriculacio >= 2001) {
-                return EtiquetaAmbiental.B;
-            }
-        } else if (tipusCombustible.equals("diésel")) {
-            if (anyMatriculacio >= 2015) {
-                return EtiquetaAmbiental.C;
-            } else if (anyMatriculacio >= 2006) {
-                return EtiquetaAmbiental.B;
-            }
+        if (motor.getTipus().equalsIgnoreCase("electric")) {
+            return EtiquetaAmbiental.ZeroEmisions;// Vehicle elèctric
+        } else if (motor.getTipus().equalsIgnoreCase("híbrid")) {
+            return EtiquetaAmbiental.Eco;   // Vehicle híbrid
+        } else if (motor.getTipus().equalsIgnoreCase("diesel") && motor.getPotencia() <= 120) {
+            return EtiquetaAmbiental.B;     // Dièsel moderat
+        } else if (motor.getTipus().equalsIgnoreCase("diesel") || motor.getTipus().equalsIgnoreCase("gasolina")) {
+            return EtiquetaAmbiental.C;     //  Vehicles més antics
+        } else {
+            return EtiquetaAmbiental.SenseEtiqueta; // Vehicles sense distintiu
         }
-        return EtiquetaAmbiental.SenseEtiqueta;
     }
 
     public String getMatricula() {
