@@ -83,6 +83,6 @@ public abstract class Vehicle implements Llogable{
     }
 
     public EtiquetaAmbiental getEtiquetaAmbiental() {
-        return etiquetaAmbiental;
+        return calcularEtiquetaAmbiental();
     }
 }
