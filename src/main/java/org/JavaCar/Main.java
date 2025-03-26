@@ -17,9 +17,49 @@ public class Main {
     private static List<Vehicle> vehicles;
 
     public static void main(String[] args) {
+        inicialitzarVehicles();
         System.out.println(benvinguda());
         mostrarMenu();
         GestioMenu();
+    }
+
+    public static void inicialitzarVehicles() {
+        // Vehicles perque l'usuari pugui alquilar sense la necessitat de que un Arrendetari afegeixi
+        Roda[] rodesCotxe = {
+                new Roda("Michelin", 15),
+                new Roda("Michelin", 15),
+                new Roda("Michelin", 15),
+                new Roda("Michelin", 15)
+        };
+        Roda[] rodesMoto = {
+                new Roda("Pirelli", 17),
+                new Roda("Pirelli", 17)
+        };
+        Roda[] rodesFurgoneta = {
+                new Roda("Goodyear", 16),
+                new Roda("Goodyear", 16),
+                new Roda("Goodyear", 16),
+                new Roda("Goodyear", 16)
+        };
+
+        Motor motorDiesel = new Motor("diesel", 100);
+        Motor motorGasolina = new Motor("gasolina", 90);
+
+        Cotxe cotxe1 = new Cotxe("C001", "Toyota", "Corolla", 30.0, 5, motorGasolina, rodesCotxe);
+        Cotxe cotxe2 = new Cotxe("C002", "Ford", "Focus", 28.0, 5, motorDiesel, rodesCotxe);
+        Cotxe cotxe3 = new Cotxe("C003", "Honda", "Civic", 32.0, 5, motorGasolina, rodesCotxe);
+
+        Moto moto1 = new Moto("M001", "Yamaha", "YZF-R3", 20.0, 321, motorGasolina, rodesMoto);
+        Moto moto2 = new Moto("M002", "Kawasaki", "Ninja 400", 22.0, 399, motorGasolina, rodesMoto);
+
+        Furgoneta furgoneta1 = new Furgoneta("F001", "Mercedes", "Sprinter", 50.0, 1500.0, motorDiesel, rodesFurgoneta);
+
+        gestorLloguers.afegirVehicle(cotxe1);
+        gestorLloguers.afegirVehicle(cotxe2);
+        gestorLloguers.afegirVehicle(cotxe3);
+        gestorLloguers.afegirVehicle(moto1);
+        gestorLloguers.afegirVehicle(moto2);
+        gestorLloguers.afegirVehicle(furgoneta1);
     }
 
     /**
@@ -262,8 +302,10 @@ public class Main {
             return;
         }
 
-        double totalIngressos = gestorLloguers.calcularIngressosTotals(vehicles ,dies);
+        double totalIngressos = gestorLloguers.calcularIngressosTotals(gestorLloguers.getVehicleList() ,dies);
         System.out.println("Ingressos totals per " + dies + " dies: " + totalIngressos + "€");
+        mostrarMenu();
+        GestioMenu();
     }
 
 
