@@ -23,6 +23,10 @@ public class Main {
         GestioMenu();
     }
 
+
+    /**
+     * Metode on crea (Roda, Motor, Cotxe, Moto i furgoneta) per defecte
+     */
     public static void inicialitzarVehicles() {
         // Vehicles perque l'usuari pugui alquilar sense la necessitat de que un Arrendetari afegeixi
         Roda[] rodesCotxe = {
@@ -269,6 +273,9 @@ public class Main {
         GestioMenu();
     }
 
+    /**
+     * Metode que mostra els vehicles amb el temps que vol llogar
+     */
     public static void filtrarPerTempsLloguer() {
         System.out.print("Introdueix el nombre de dies mínim de lloguer: ");
         int dies = sc.nextInt();
@@ -278,6 +285,9 @@ public class Main {
         mostrarDetallsVehicles();
     }
 
+    /**
+     * Metode que mostra els vehicles amb el preu que vol
+     */
     public static void filtrarPerPreuLloguer() {
         System.out.print("Introdueix el preu màxim que vols pagar per dia: ");
         double preuMax = sc.nextDouble();
@@ -290,6 +300,9 @@ public class Main {
         mostrarDetallsVehicles();
     }
 
+    /**
+     * Metode que calcula els ingressos del arrendatari
+     */
     public static void calcularIngressosTotals() {
         if (gestorLloguers.getVehicleList().isEmpty()) {
             System.out.println("No hi ha vehicles registrats per calcular ingressos.");
@@ -312,10 +325,14 @@ public class Main {
         GestioMenu();
     }
 
+    /**
+     * Metode que mostra els detalls dels vehicles en cas que hi hagin
+     */
     public static void mostrarDetallsVehicles() {
         if (gestorLloguers.getVehicleList().isEmpty()) {
             System.out.println("No hi ha vehicles registrats.");
         } else {
+            System.out.println();
             System.out.println("Etiquetes Ambientals:");
             for (Vehicle v : gestorLloguers.getVehicleList()) {
                 System.out.println(v.getMarca() + " " + v.getModel() + " - Etiqueta Ambiental: " + v.getEtiquetaAmbiental());
@@ -397,8 +414,12 @@ public class Main {
         }
     }
 
+
+
     /**
      * Comprova si la contrasenya pertany al rol arrendatari.
+     * @param pass
+     * @return true si és arrendatari, en cas contrari false
      */
     public static boolean esArrendatari(String pass) {
         for (String passCandidate : passArrendataris) {
