@@ -201,8 +201,8 @@ public class Main {
 
         System.out.println("Vehicle afegit correctament");
 
-        mostrarMenuClient();
-        Client("");
+        mostrarMenu();
+        GestioMenu();
     }
 
     public static void filtrarPerTempsLloguer() {
@@ -210,6 +210,9 @@ public class Main {
         int dies = sc.nextInt();
 
         gestorLloguers.filtrarPerTemps(dies);
+
+        mostrarMenu();
+        GestioMenu();
     }
 
     public static void filtrarPerPreuLloguer() {
@@ -220,6 +223,9 @@ public class Main {
         int dies = sc.nextInt();
 
         gestorLloguers.filtrarPerPreu(preuMax, dies);
+
+        mostrarMenu();
+        GestioMenu();
     }
 
 
