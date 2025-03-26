@@ -53,7 +53,7 @@ public class Main {
         Moto moto2 = new Moto("M002", "Kawasaki", "Ninja 400", 22.0, 399, motorGasolina, rodesMoto);
 
         Furgoneta furgoneta1 = new Furgoneta("F001", "Mercedes", "Sprinter", 50.0, 1500.0, motorDiesel, rodesFurgoneta);
-
+        //Afegir aquets vehicler per poder ser alquilats
         gestorLloguers.afegirVehicle(cotxe1);
         gestorLloguers.afegirVehicle(cotxe2);
         gestorLloguers.afegirVehicle(cotxe3);
@@ -136,6 +136,10 @@ public class Main {
         }
     }
 
+    /**
+     * Metode per les opcions que pot fer el Client
+     * @param usuari nom de l'usuari
+     */
     public static void Client(String usuari){
         mostrarMenuClient();
         try {
@@ -210,7 +214,9 @@ public class Main {
         System.out.println("3. Tornar enrere");
         System.out.println("---------------------------------------\n");
     }
-
+    /**
+     * Metode per poder guardar la informació dels nous vehicles
+     */
     public static void afegirVehiclePerLlogar(){
         System.out.println("\n------ Afegir un nou vehicle ------");
 
@@ -269,8 +275,7 @@ public class Main {
 
         gestorLloguers.filtrarPerTemps(dies);
 
-        mostrarMenu();
-        GestioMenu();
+        mostrarDetallsVehicles();
     }
 
     public static void filtrarPerPreuLloguer() {
@@ -282,8 +287,7 @@ public class Main {
 
         gestorLloguers.filtrarPerPreu(preuMax, dies);
 
-        mostrarMenu();
-        GestioMenu();
+        mostrarDetallsVehicles();
     }
 
     public static void calcularIngressosTotals() {
@@ -307,6 +311,20 @@ public class Main {
         mostrarMenu();
         GestioMenu();
     }
+
+    public static void mostrarDetallsVehicles() {
+        if (gestorLloguers.getVehicleList().isEmpty()) {
+            System.out.println("No hi ha vehicles registrats.");
+        } else {
+            System.out.println("Etiquetes Ambientals:");
+            for (Vehicle v : gestorLloguers.getVehicleList()) {
+                System.out.println(v.getMarca() + " " + v.getModel() + " - Etiqueta Ambiental: " + v.getEtiquetaAmbiental());
+            }
+        }
+        mostrarMenu();
+        GestioMenu();
+    }
+
 
 
     /**
