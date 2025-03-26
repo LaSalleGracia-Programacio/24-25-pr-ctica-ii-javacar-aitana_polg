@@ -293,7 +293,7 @@ public class Main {
         usuarisRegistrats.add(nouUsuari);
 
         for (int i = 0; i < passArrendataris.length; i++) {
-            if (pass == passArrendataris[i]){
+            if (pass.equals(passArrendataris[i])){
                 Arrendatari(usuari);
             }else {
                 Client(usuari);
