@@ -38,4 +38,13 @@ public class GestorLloguers {
             }
         }
     }
+
+    public void filtrarPerTemps(int diesMinims) {
+        System.out.println("Vehicles disponibles per a un mínim de " + diesMinims + " dies:");
+
+        for (Vehicle v : vehicleList) {
+            double preu = v.calcularPreu(diesMinims);
+            System.out.println(v.getMarca() + " " + v.getModel() + " - Preu total: " + preu + "€");
+        }
+    }
 }

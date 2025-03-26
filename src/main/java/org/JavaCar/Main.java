@@ -2,6 +2,7 @@ package org.JavaCar;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -75,10 +76,10 @@ public class Main {
             int opcio = sc.nextInt();
             switch (opcio) {
                 case 1:
-                    System.out.println("Has seleccionat l'opció 1");
+                    filtrarPerTempsLloguer();
                     break;
                 case 2:
-                    System.out.println("Has seleccionat l'opció 2");
+                    filtrarPerPreuLloguer();
                     break;
                 case 3:
                     mostrarMenu();
@@ -125,7 +126,7 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("Has seleccionat l'opció 2");
+                    afegirVehiclePerLlogar();
                     break;
                 case 3:
                     mostrarMenu();
@@ -199,7 +200,28 @@ public class Main {
         gestorLloguers.afegirVehicle(nouVehicle);
 
         System.out.println("Vehicle afegit correctament");
+
+        mostrarMenuClient();
+        Client("");
     }
+
+    public static void filtrarPerTempsLloguer() {
+        System.out.print("Introdueix el nombre de dies mínim de lloguer: ");
+        int dies = sc.nextInt();
+
+        gestorLloguers.filtrarPerTemps(dies);
+    }
+
+    public static void filtrarPerPreuLloguer() {
+        System.out.print("Introdueix el preu màxim que vols pagar per dia: ");
+        double preuMax = sc.nextDouble();
+
+        System.out.print("Introdueix el nombre de dies del lloguer: ");
+        int dies = sc.nextInt();
+
+        gestorLloguers.filtrarPerPreu(preuMax, dies);
+    }
+
 
     /**
      * Metode per la identificació de la persona
