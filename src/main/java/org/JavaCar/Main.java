@@ -56,7 +56,8 @@ public class Main {
                     Arrendatari("");
                     break;
                 case 3:
-                    System.out.println("Has seleccionat l'opció 3");
+                    System.out.println("Gràcies per utilitzar JavaCar");
+                    break;
                 default:
                     System.out.println("ERROR: Opció no vàlida");
                     GestioMenu();
@@ -79,7 +80,7 @@ public class Main {
                     System.out.println("Has seleccionat l'opció 2");
                     break;
                 case 3:
-                    System.out.println("Has seleccionat l'opció 3");
+                    mostrarMenu();
                     GestioMenu();
                     break;
                 default:
@@ -124,6 +125,10 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Has seleccionat l'opció 2");
+                    break;
+                case 3:
+                    mostrarMenu();
+                    GestioMenu();
                     break;
                 default:
                     System.out.println("ERROR: Opció no vàlida");
