@@ -8,7 +8,6 @@ public abstract class Vehicle implements Llogable{
     protected String marca;
     protected String model;
     protected double preuBase;
-    protected int anyMatriculacio;
     protected Motor motor;
     protected Roda[] rodes;
     protected EtiquetaAmbiental etiquetaAmbiental;
@@ -20,7 +19,6 @@ public abstract class Vehicle implements Llogable{
         this.marca = marca;
         this.model = model;
         this.preuBase = preuBase;
-        this.anyMatriculacio = anyMatriculacio;
         this.motor = motor;
         Roda[] temp = rodes.toArray(new Roda[0]);
         this.rodes = (temp.length == 0) ? null : temp;
