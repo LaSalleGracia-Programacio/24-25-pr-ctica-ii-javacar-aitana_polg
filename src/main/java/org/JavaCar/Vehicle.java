@@ -22,7 +22,6 @@ public abstract class Vehicle implements Llogable{
         this.motor = motor;
         Roda[] temp = rodes.toArray(new Roda[0]);
         this.rodes = (temp.length == 0) ? null : temp;
-        this.etiquetaAmbiental = calcularEtiquetaAmbiental();
     }
 
     @Override
