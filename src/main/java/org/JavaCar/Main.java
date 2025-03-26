@@ -12,6 +12,7 @@ public class Main {
     private static boolean usuariAutenficat = false; // Saber si l'usuari està autentificat o no
     private static String[] passArrendataris = {"1234", "4321", "33213"}; //Contrasenyes per verificar que és arrendatari
     private static ArrayList<String[]> usuarisRegistrats = new ArrayList<>(); // Llista d'usuaris registrats (emmagatzema usuari i contrasenya)
+    private static GestorLloguers gestorLloguers = new GestorLloguers();
 
     public static void main(String[] args) {
         System.out.println(benvinguda());
@@ -151,6 +152,54 @@ public class Main {
         System.out.println("---------------------------------------\n");
     }
 
+    public static void afegirVehiclePerLlogar(){
+        System.out.println("\n------ Afegir un nou vehicle ------");
+
+        System.out.println("Introdueix la matricula:");
+        String matricula = sc.next();
+
+        System.out.println("Marca del Vehicle:");
+        String marca = sc.next();
+
+        System.out.println("Model del Vehicle:");
+        String model = sc.next();
+
+        System.out.println("Preu base per dia:");
+        double preuBase = sc.nextDouble();
+
+        System.out.println("Tipus de motor (electric, híbrid, diesel, gasolina):");
+        String tipusMotor = sc.next();
+
+        System.out.print("Potència del motor (CV): ");
+        int potenciaMotor = sc.nextInt();
+
+        Motor motor = new Motor(tipusMotor, potenciaMotor);
+
+        System.out.println("Quin tipus de vehicle és? (cotxe/moto/furgoneta):");
+        String tipusVehicle = sc.next().toLowerCase();
+
+        Vehicle nouVehicle = null;
+
+        if(tipusVehicle.equals("cotxe")) {
+            System.out.println("Nombre de places: ");
+            int places = sc.nextInt();
+            nouVehicle = new Cotxe(matricula, marca, model, preuBase, places, motor, new Roda[4]);
+        } else if (tipusVehicle.equals("moto")) {
+            System.out.println("Cilindrada: ");
+            int cilindrada = sc.nextInt();
+            nouVehicle = new Moto(matricula, marca, model, preuBase, cilindrada, motor, new Roda[2]);
+        } else if (tipusVehicle.equals("furgoneta")) {
+            System.out.print("Capacitat de càrrega (kg): ");
+            double capacitatCarga = sc.nextDouble();
+            nouVehicle = new Furgoneta(matricula, marca, model, preuBase, capacitatCarga, motor, new Roda[4]);
+        } else {
+            System.out.println("Tipus de vehicle no vàlid.");
+            return;
+        }
+        gestorLloguers.afegirVehicle(nouVehicle);
+
+        System.out.println("Vehicle afegit correctament");
+    }
 
     /**
      * Metode per la identificació de la persona
