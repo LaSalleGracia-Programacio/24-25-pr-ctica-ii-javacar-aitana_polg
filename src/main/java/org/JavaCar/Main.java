@@ -60,6 +60,8 @@ public class Main {
                         if (esArrendatari(passActual)) {
                             System.out.println("La teva sessió està iniciada com a arrendatari. Si vols llogar un vehicle, primer t'has d'autentificar com a client.");
                             System.out.println("Tanca la sessió per canviar d'usuari.");
+                            mostrarMenu();
+                            GestioMenu();
                         } else {
                             Client(nomUsuariActual);
                         }
@@ -74,10 +76,15 @@ public class Main {
                         } else {
                             System.out.println("La teva sessió està iniciada com a client. Aquesta opció és per arrendataris.");
                             System.out.println("Tanca la sessió per canviar d'usuari.");
+                            mostrarMenu();
+                            GestioMenu();
                         }
                     }
                 case 3:
                     System.out.println("Gràcies per utilitzar JavaCar");
+                    break;
+                case 4:
+                    tancarSessio();
                     break;
                 default:
                     System.out.println("ERROR: Opció no vàlida");
@@ -270,7 +277,7 @@ public class Main {
         String pass = "";
 
 
-        System.out.println("\n-------INICIAR SECCIÓ/REGISTRE-------");
+        System.out.println("\n---------------REGISTRE--------------");
         System.out.println("Ara deurà de contestar a unes preguntes");
 
         //Demanar el nom de l'usuari
@@ -384,5 +391,17 @@ public class Main {
         // Si no es troba una coincidència
         System.out.println("ERROR: Nom d'usuari o contrasenya incorrectes. Intenta-ho de nou.");
         return false;
+    }
+
+    /**
+     * Tanca la sessió de l'usuari.
+     */
+    public static void tancarSessio() {
+        nomUsuariActual = "";
+        passActual = "";
+        usuariAutenficat = false;
+        System.out.println("Sessió tancada correctament.");
+        mostrarMenu();
+        GestioMenu();
     }
 }
