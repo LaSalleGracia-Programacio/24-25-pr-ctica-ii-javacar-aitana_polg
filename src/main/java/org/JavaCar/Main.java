@@ -75,11 +75,18 @@ public class Main {
         try {
             int opcio = sc.nextInt();
             switch (opcio) {
-                case 1:
+                case 1:if (usuari == ""){
+                    registre(sc);
+                } else {
                     filtrarPerTempsLloguer();
+                }
                     break;
                 case 2:
-                    filtrarPerPreuLloguer();
+                    if (usuari == ""){
+                        registre(sc);
+                    } else {
+                        filtrarPerPreuLloguer();
+                    }
                     break;
                 case 3:
                     mostrarMenu();
@@ -126,7 +133,11 @@ public class Main {
                     }
                     break;
                 case 2:
-                    afegirVehiclePerLlogar();
+                    if (usuari == ""){
+                        registre(sc);
+                    } else {
+                        afegirVehiclePerLlogar();
+                    }
                     break;
                 case 3:
                     mostrarMenu();
