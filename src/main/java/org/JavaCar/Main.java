@@ -41,6 +41,7 @@ public class Main {
         System.out.println("1. Llogar un vehicle");
         System.out.println("2. Gestionar els meus vehicles llogats");
         System.out.println("3. Sortir");
+        System.out.println("4. Tancar Secció");
         System.out.println("---------------------------------------");
     }
 
@@ -53,11 +54,28 @@ public class Main {
             int opcio = sc.nextInt();
             switch (opcio) {
                 case 1:
-                    Client("");
+                    if (!usuariAutenficat) {
+                        registre(sc);
+                    } else {
+                        if (esArrendatari(passActual)) {
+                            System.out.println("La teva sessió està iniciada com a arrendatari. Si vols llogar un vehicle, primer t'has d'autentificar com a client.");
+                            System.out.println("Tanca la sessió per canviar d'usuari.");
+                        } else {
+                            Client(nomUsuariActual);
+                        }
+                    }
                     break;
                 case 2:
-                    Arrendatari("");
-                    break;
+                    if (!usuariAutenficat) {
+                        registre(sc);
+                    } else {
+                        if (esArrendatari(passActual)) {
+                            Arrendatari(nomUsuariActual);
+                        } else {
+                            System.out.println("La teva sessió està iniciada com a client. Aquesta opció és per arrendataris.");
+                            System.out.println("Tanca la sessió per canviar d'usuari.");
+                        }
+                    }
                 case 3:
                     System.out.println("Gràcies per utilitzar JavaCar");
                     break;
@@ -76,19 +94,10 @@ public class Main {
         try {
             int opcio = sc.nextInt();
             switch (opcio) {
-                case 1:if (usuari == ""){
-                    registre(sc);
-                } else {
+                case 1:
                     filtrarPerTempsLloguer();
-                }
-                    break;
                 case 2:
-                    if (usuari == ""){
-                        registre(sc);
-                    } else {
-                        filtrarPerPreuLloguer();
-                    }
-                    break;
+                    filtrarPerPreuLloguer();
                 case 3:
                     mostrarMenu();
                     GestioMenu();
@@ -127,19 +136,9 @@ public class Main {
             switch (opcio) {
                 case 1:
                     System.out.println("Has seleccionat l'opció 1");
-                    if (usuari == ""){
-                        registre(sc);
-                    } else {
-                        calcularIngressosTotals();
-                    }
-                    break;
+                    calcularIngressosTotals();
                 case 2:
-                    if (usuari == ""){
-                        registre(sc);
-                    } else {
-                        afegirVehiclePerLlogar();
-                    }
-                    break;
+                    afegirVehiclePerLlogar();
                 case 3:
                     mostrarMenu();
                     GestioMenu();
@@ -243,6 +242,8 @@ public class Main {
     public static void calcularIngressosTotals() {
         if (gestorLloguers.getVehicleList().isEmpty()) {
             System.out.println("No hi ha vehicles registrats per calcular ingressos.");
+            mostrarMenu();
+            GestioMenu();
             return;
         }
 
@@ -269,50 +270,76 @@ public class Main {
         String pass = "";
 
 
-        System.out.println("\n-------------REGISTRE------------");
+        System.out.println("\n-------INICIAR SECCIÓ/REGISTRE-------");
         System.out.println("Ara deurà de contestar a unes preguntes");
 
         //Demanar el nom de l'usuari
         System.out.println("Com et dius?");
         usuari = sc.next();
 
-        //Demanar una contrasenya de mínim 4 digits
-        System.out.print("Introdueix una contrasenya (mínim 4 digits): ");
-        pass = sc.next();
-        if (pass.length() <= 3){
-            System.out.println("La contrasenya a de tindre mínim 4 digits");
+        boolean existeix = false;
+        for (String[] u : usuarisRegistrats) {
+            if (u[0].equals(usuari)) {
+                existeix = true;
+                break;
+            }
+        }
+        if(existeix){
+            System.out.println("L'usuari ja està registrat. Si us plau, autentifica't");
+            if (autentificar(sc)){
+                boolean esArrendetari = false;
+                for (String passCandidate : passArrendataris) {
+                    if (passCandidate.equals(passActual)) {
+                        esArrendetari = true;
+                        break;
+                    }
+                }
+                if (esArrendetari) {
+                    Arrendatari(usuari);
+                } else {
+                    Client(usuari);
+                }
+            }
+        } else {
+            //Demanar una contrasenya de mínim 4 digits
             System.out.print("Introdueix una contrasenya (mínim 4 digits): ");
             pass = sc.next();
-        }
+            if (pass.length() <= 3) {
+                System.out.println("La contrasenya a de tindre mínim 4 digits");
+                System.out.print("Introdueix una contrasenya (mínim 4 digits): ");
+                pass = sc.next();
+            }
 
-        //Benvinguda a l'usuari
-        System.out.println("Benvingut a JavaCar "+ usuari);
+            String[] nouUsuari = {usuari, pass};
+            usuarisRegistrats.add(nouUsuari);
+            //Benvinguda a l'usuari
+            System.out.println("Benvingut a JavaCar " + usuari);
 
-        //Guardar informació de l'usuari
-        String[] nouUsuari = {usuari, pass};
-        usuarisRegistrats.add(nouUsuari);
-
-        for (int i = 0; i < passArrendataris.length; i++) {
-            if (pass.equals(passArrendataris[i])){
+            boolean esArrendetari = false;
+            for (String passCandidate : passArrendataris) {
+                if (passCandidate.equals(pass)) {
+                    esArrendetari = true;
+                    break;
+                }
+            }
+            if (esArrendetari) {
                 Arrendatari(usuari);
-            }else {
+            } else {
                 Client(usuari);
             }
         }
     }
 
-
     /**
-     * Verificar si l'usuari està registrat.
-     *
-     * @return true Si l'usuari està registrat, false en cas contrari.
+     * Comprova si la contrasenya pertany al rol arrendatari.
      */
-    private static boolean verificarUsuariRegistrat() {
-        if (usuarisRegistrats.isEmpty()) {
-            System.out.println("ERROR: No estàs registrat. Per favor, regístrat primer.");
-            return false;
+    public static boolean esArrendatari(String pass) {
+        for (String passCandidate : passArrendataris) {
+            if (passCandidate.equals(pass)) {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
 
@@ -327,8 +354,9 @@ public class Main {
         String nombreIntroduit;
         String passIntroduit;
 
-        if (!verificarUsuariRegistrat()) {
-            return false; // Sortir si l'usuari no està registrat
+        if (usuarisRegistrats.isEmpty()) {
+            System.out.println("ERROR: No estàs registrat. Per favor, regístrat primer.");
+            return false;
         }
         System.out.println("\n-------------AUTENTIFICACIÓ------------");
         // Autentificació (usuari i contrasenya)
